@@ -1,11 +1,17 @@
-name: Deploy to Amazon ECS
+name: "EC2-deploy"
+
 
 on:
-  workflow_dispatch: # Manual trigge
-    input:
-    branches:
-      - main
-      - dev
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - main
 
 env:
   AWS_REGION: MY_AWS_REGION            
