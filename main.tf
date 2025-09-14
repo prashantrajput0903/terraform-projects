@@ -8,14 +8,14 @@ terraform {
 }
 
 provider "aws" {
-  region = ""
-  access_key = ""
-  secret_key = ""
+  region = var.region
+  access_key = var.region
+  secret_key = var.region
 }
 
 resource "aws_instance" "example" {
-    ami = ""
-    instance_type = ""
+    ami = var.ami
+    instance_type = var.instance_type
 
     tags = {
       Name ="server"
