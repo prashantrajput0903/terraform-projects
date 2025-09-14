@@ -41,8 +41,8 @@ jobs:
         working-directory: ./terraform
         run: |
            terraform plan -out=tfplan \
-           -var "ami"=${{ AMI }}
-           -avr "instance_type"= ${{INSTANCE_TYPE}}
+           -var "ami"=${{ vars.sAMI }}
+           -avr "instance_type"= ${{ vars.INSTANCE_TYPE}}
       
       - name: Terraform Apply
         working-directory: ./terraform
