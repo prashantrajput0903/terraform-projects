@@ -14,7 +14,7 @@ on:
           - main
 
 env:
-  AWS_REGION: MY_AWS_REGION            
+  AWS_REGION: REGION          
 
 permissions:
   contents: read
