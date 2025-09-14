@@ -12,10 +12,18 @@ on:
           - dev
           - main
 
+env:
+  AMI: ${{ vars.AMI }}
+  INSTANCE_TYPE: ${{vars.INSTANCE_TYPE}}
+  ROOT_PATH: './terraform'
+
+  
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment }}
+    
 
     steps:
       - name: Checkout
@@ -31,21 +39,22 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.6.7
+          terraform_version: 1.6.6
+      
     
       - name: terraform Init
-        working-directory: ./terraform
+        working-directory: env.ROOT_PATH
         run: terraform init 
       
       - name: terraform plan
-        working-directory: ./terraform
+        working-directory: env.ROOT_PATH
         run: |
            terraform plan -out=tfplan \
-           -var "ami"=${{ vars.sAMI }}
-           -avr "instance_type"= ${{ vars.INSTANCE_TYPE}}
+           -var "ami"=${{ env.AMI }}
+           -avr "instance_type"= ${{ env.INSTANCE_TYPE}}
       
       - name: Terraform Apply
-        working-directory: ./terraform
+        working-directory: env.ROOT_PATH
         run: terraform apply -auto-approve tfplan
 
         
