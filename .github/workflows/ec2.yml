@@ -51,7 +51,7 @@ jobs:
         run: |
            terraform plan -out=tfplan \
            -var "ami"=${{ env.AMI }}
-           -avr "instance_type"= ${{ env.INSTANCE_TYPE}}
+           -var "instance_type"= ${{ env.INSTANCE_TYPE}}
       
       - name: Terraform Apply
         working-directory: ${{ env.ROOT_PATH }}
