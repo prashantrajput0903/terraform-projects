@@ -1,8 +1,8 @@
 name: Deploy to Amazon ECS
 
 on:
-  workflow_dispatch: # Manual trigger
-  push:
+  workflow_dispatch: # Manual trigge
+    input:
     branches:
       - main
       - dev
