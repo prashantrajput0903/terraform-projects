@@ -43,18 +43,18 @@ jobs:
       
     
       - name: terraform Init
-        working-directory: env.ROOT_PATH
+        working-directory: ${{ env.ROOT_PATH }}
         run: terraform init 
       
       - name: terraform plan
-        working-directory: env.ROOT_PATH
+        working-directory: ${{ env.ROOT_PATH }}
         run: |
            terraform plan -out=tfplan \
            -var "ami"=${{ env.AMI }}
            -avr "instance_type"= ${{ env.INSTANCE_TYPE}}
       
       - name: Terraform Apply
-        working-directory: env.ROOT_PATH
+        working-directory: ${{ env.ROOT_PATH }}
         run: terraform apply -auto-approve tfplan
 
         
