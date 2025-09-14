@@ -54,7 +54,7 @@ jobs:
            -var "AWS_ACCESS_KEY_ID=${{ env.AWS_SECRET_ACCESS_KEY }}" \
            -var "AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}" \
            -var "ami=${{ env.AMI }}" \
-           -var "instance_type= ${{ env.INSTANCE_TYPE}}"
+           -var "instance_type= ${{ env.INSTANCE_TYPE }}"
       
       - name: Terraform Apply
         working-directory: ${{ env.ROOT_PATH }}
